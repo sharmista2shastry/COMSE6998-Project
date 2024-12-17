@@ -97,5 +97,41 @@ The quality comparison includes ROUGE-1, ROUGE-2, ROUGE-L, and BLEU scores for e
 
 You can find the **Wandb report** with performance benchamarking [here](https://wandb.ai/hpmlcolumbia/intro2llm/reports/Performance-and-Quality-Benchmarking-of-Standard-GPT-2-Flash-Attention-GPT-2-and-Flash-Attention-ALiBi-GPT-2--VmlldzoxMDYxMDkyMA?accessToken=a69c5flkf4r4r2bwepgfxfraj06efcyjs2z3actqn4uoj4hd0ye6my8lkltifc2r).
 
+## Analysis of Results
+
+### Efficiency Comparison
+
+The following table compares the inference time and memory usage of three models: Standard GPT-2, Flash GPT-2, and Flash + ALiBi GPT-2.
+
+|        Model        | Inference Time (ms) | Memory (MB) |
+|---------------------|---------------------|-------------|
+|   Standard GPT-2    |        72.41        |   4237.02   |
+|     Flash GPT-2     |        15.46        |   3577.86   |
+| Flash + ALiBi GPT-2 |        25.76        |   3578.98   |
+
+- **Inference Time**: Flash GPT-2 shows a significant improvement in inference time, with a reduction from 72.41 ms (Standard GPT-2) to 15.46 ms. This demonstrates the efficiency gain provided by FlashAttention. However, the Flash + ALiBi GPT-2 model shows a slight increase in inference time (25.76 ms), which suggests that while ALiBi integration improves performance, it incurs a small overhead compared to the pure FlashAttention variant.
+- **Memory Usage**: Flash GPT-2 reduces memory usage significantly from 4237.02 MB (Standard GPT-2) to 3577.86 MB. The Flash + ALiBi variant shows a marginal increase in memory usage (3578.98 MB), but it is still much lower than the memory required by the Standard GPT-2 model.
+
+### Quality Comparison
+
+The following table compares the text generation quality of the models using various evaluation metrics: ROUGE-1, ROUGE-2, ROUGE-L, and BLEU.
+
+|        Model        | ROUGE-1 | ROUGE-2 | ROUGE-L |  BLEU  |
+|---------------------|---------|---------|---------|--------|
+|   Standard GPT-2    | 0.0870  | 0.0315  | 0.0578  | 0.0084 |
+|     Flash GPT-2     | 0.0775  | 0.0282  | 0.0524  | 0.0075 |
+| Flash + ALiBi GPT-2 | 0.0922  | 0.0336  | 0.0623  | 0.0089 |
+
+- **ROUGE Scores**: The Flash + ALiBi GPT-2 model achieves the highest scores across all ROUGE metrics (ROUGE-1: 0.0922, ROUGE-2: 0.0336, ROUGE-L: 0.0623). This indicates that integrating ALiBi into FlashAttention improves the model's ability to capture semantic similarities in generated text. The Standard GPT-2 model performs better than Flash GPT-2 but lags behind Flash + ALiBi GPT-2.
+- **BLEU Score**: Similarly, Flash + ALiBi GPT-2 achieves a slightly higher BLEU score (0.0089) compared to both the Standard GPT-2 (0.0084) and Flash GPT-2 (0.0075). This suggests that the Flash + ALiBi model generates slightly better quality text in terms of precision and n-gram overlap.
+
+### Conclusion
+
+- **Efficiency**: FlashAttention provides a significant boost in inference efficiency compared to the standard GPT-2 model, reducing both inference time and memory usage. The addition of ALiBi introduces a small overhead in inference time but still maintains a substantial reduction in memory usage compared to the original GPT-2 model.
+- **Quality**: Integrating ALiBi into FlashAttention results in the best performance in terms of text generation quality across all evaluation metrics. Flash + ALiBi GPT-2 outperforms both Standard GPT-2 and Flash GPT-2, showing that the integration of ALiBi improves text generation without significantly sacrificing efficiency.
+
+Overall, using the combination of Flash Attention and ALiBi Scores showed an improvement in the text summarization task, while also maintaining the advantages offered by the Flash Attention mechanism.
+
+
 
 

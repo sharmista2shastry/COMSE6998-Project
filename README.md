@@ -132,6 +132,14 @@ The following table compares the text generation quality of the models using var
 
 Overall, using the combination of Flash Attention and ALiBi Scores showed an improvement in the text summarization task, while also maintaining the advantages offered by the Flash Attention mechanism.
 
+## References
+
+1. Dao, T., Fu, D. Y., Ermon, S., Rudra, A., & Ré, C. (2022). FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness. *arXiv*. [https://arxiv.org/abs/2205.14135](https://arxiv.org/abs/2205.14135)
+
+2. Press, O., Smith, N. A., & Lewis, M. (2022). Train Short, Test Long: Attention with Linear Biases Enables Input Length Extrapolation. *arXiv*. [https://arxiv.org/abs/2108.12409](https://arxiv.org/abs/2108.12409)
+
+3. Hermann, K. M., et al. (2015). Teaching machines to read and comprehend. In *Proceedings of the 28th International Conference on Neural Information Processing Systems (NeurIPS 2015)*, 1693-1701. [https://arxiv.org/abs/1506.03340](https://arxiv.org/abs/1506.03340)
+
 
 
 
